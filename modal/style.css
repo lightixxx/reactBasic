@@ -1,3 +1,33 @@
+body {
+  font-family: 'DM Sans', sans-serif;
+  padding: 40px 70px;
+}
+
+p {
+  color: #555555;
+  font-weight: 300;
+  font-size: 16px;
+}
+
+button {
+  width: 50px;
+  height: 25px;
+  border: none;
+  border-radius: 2px;
+  color: #fff;
+  background-color: #3040C4;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 1.6;
+  letter-spacing: -0.05em;
+  transition: opacity 300ms ease-in-out;
+  cursor: pointer;
+}
+
+button:hover {
+  opacity: 0.7;
+}
+
 .modal-wrapper {
   position: fixed;
   top: 0;
@@ -15,10 +45,6 @@
   padding: 30px 15px;
   border-radius: 5px;
   width: 320px;
-}
-
-.modal p {
-
 }
 
 .close-wrapper {
