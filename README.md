@@ -30,8 +30,132 @@
 - Node.js: 자바스크립트 런타임인 Node.js는 Webpack과 Babel 같은 도구를 사용하기 위해 설치해야 한다.
 - Yarn: npm과 마찬가지로 패키지 매니저 도구이다. 프로젝트에서 사용되는 라이브러리를 설치하고, 해당 라이브러리의 버전 관리를 할 때 사용한다.
 
+<br />
+
+## JSX의 기본 규칙
+```jsx
+return <div>Hello world!</div>;
+```
+JSX는 리액트에서 생김새를 정의할 때 사용하는 문법이다. 리액트 컴포넌트 파일에서 XML 형태로 코드를 작성하면 babel이 JSX를 JavaScript 문법으로 변환해준다.
+
+<br />
+
+### 태그는 꼭 닫아야 한다.
+```jsx
+import React from 'react';
+import Hello from './Hello';
+
+function App() {
+  return (
+    <div>
+      <Hello />
+      <Hello />
+      <Hello />
+      <div> // error!
+    </div>
+  );
+}
+
+export default App;
+```
+일반적으로 HTML에서는 `<input>`, `<br>`태그는 닫지않고 사용할 수 있지만 리액트는 무조건 닫아야 한다.
+
+```jsx
+import React from 'react';
+import Hello from './Hello';
+
+function App() {
+  return (
+    <div>
+      <Hello />
+      <Hello />
+      <Hello />
+      <input />
+      <br />
+    </div>
+  );
+}
+
+export default App;
+```
+<br />
+
+### 감싸져야 하는 태그
+
+```jsx
+import React from 'react';
+import Hello from './Hello';
+
+function App() {
+  return (
+    <Hello /> // error!
+    <div>World !</div> // error!
+  );
+}
+
+export default App;
+```
+두개 이상의 태그는 무조건 하나의 태그로 감싸야 한다.
+```jsx
+import React from 'react';
+import Hello from './Hello';
+
+function App() {
+  return (
+    <div>
+      <Hello />
+      <div>World !</div>
+    </div>
+  );
+}
+
+export default App;
+```
+하지만 불필요하게 `div`태그를 생성하는 것이 스타일 설정을 할 때 복잡함을 유발할 수 있고, `div`로 감싸기 애매한 태그들도 있다. 그땐, 리액트의 Fragment를 사용하면 된다.
+```jsx
+import React from 'react';
+import Hello from './Hello';
+
+function App() {
+  return (
+    <>
+      <Hello />
+      <div>안녕히계세요</div>
+    </>
+  );
+}
+
+export default App;
+```
+위와 같이 태그를 작성할 때 이름없이 작성하게되면, Fragment가 생성되는데, 브라우저 상에서 별도의 엘리먼트로 나타나지 않는다.
+
+<br />
+
+### JSX에서 자바스크립트 값 사용하기
+JSX 안에 자바스크립트 변수를 보여줘야할 때에는 `{ }`로 감싸서 보여준다.
+```jsx
+import React from 'react';
+import Hello from './Hello';
+
+function App() {
+  const name = 'lightix';
+  return (
+    <>
+      <Hello />
+      <div>{name}</div>
+    </>
+  );
+}
+
+export default App;
+```
+
+<br />
 
 
+
+<br />
+<br />
 <br />
 
 ##### 출처
