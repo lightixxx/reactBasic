@@ -152,6 +152,61 @@ export default App;
 
 <br />
 
+### style과 className
+1. inline-style은 객체 형태로 작성한다.
+2. `font-size`와 같이 -로 구분된 것은 camelCase로 작성한다.
+3. 기본 단위는 이며, 다른 단위를 사용할 땐 문자열로 작성한다.
+4. CSS 클래스를 설정할 땐, `class=` 가 아닌 `className=` 으로 작성한다.
+
+```jsx
+import React from 'react';
+import Hello from './Hello';
+
+function App() {
+  const name = 'react';
+  const style = {
+    backgroundColor: 'black',
+    color: 'aqua',
+    fontSize: 24,
+    padding: '1rem'
+  }
+
+  return (
+    <>
+      <Hello />
+      <div style={style}>{name}</div>
+      <div className="container"></div>
+    </>
+  );
+}
+
+export default App;
+```
+
+<br />
+
+### 주석
+JSX 내부의 주석은 `{/* 주석 */}` 처럼 작성하고, 열린 태그 내부에서는 `// 열린태그 내부의 주석` 로 작성할 수 있다.
+```jsx
+import React from 'react';
+import Hello from './Hello';
+import './App.css';
+
+
+function App() {
+  return (
+    <>
+      {/* 주석은 화면에 보이지 않습니다 */}
+      /* 중괄호로 감싸지 않으면 화면에 보입니다 */
+      <Hello 
+        // 열리는 태그 내부
+      />
+    </>
+  );
+}
+
+export default App;
+```
 
 
 <br />
