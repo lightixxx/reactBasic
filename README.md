@@ -208,6 +208,15 @@ function App() {
 export default App;
 ```
 
+<br />
+
+## props를 통해 컴포넌트에게 값 전달
+
+<br />
+
+### props의 기본 사용법
+App 컴포넌트에서 Hello 컴포넌트를 사용할 때 `name`이라는 값을 전달해주고 싶다고 가정해보자.
+
 
 <br />
 <br />
