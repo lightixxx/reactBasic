@@ -34,7 +34,13 @@
 
 ## JSX의 기본 규칙
 ```jsx
-return <div>Hello world!</div>;
+import React from 'react';
+
+function Hello() {
+  return <div>Hello world!</div>;
+}
+
+export default App;
 ```
 JSX는 리액트에서 생김새를 정의할 때 사용하는 문법이다. 리액트 컴포넌트 파일에서 XML 형태로 코드를 작성하면 babel이 JSX를 JavaScript 문법으로 변환해준다.
 
@@ -88,8 +94,8 @@ import Hello from './Hello';
 
 function App() {
   return (
-    <Hello /> // error!
-    <div>World !</div> // error!
+    <Hello />
+    <div>World !</div>
   );
 }
 
@@ -192,7 +198,6 @@ import React from 'react';
 import Hello from './Hello';
 import './App.css';
 
-
 function App() {
   return (
     <>
@@ -239,6 +244,105 @@ function Hello(props) {
 
 export default Hello;
 ```
+props는 객체형태로 전달되며, `name`의 값을 조회하고 싶다면 `props.name`을 조회하면 된다.
+
+<br />
+
+### 여러개의 props, 비구조화 할당
+props 내부의 값을 조회할 때 마다 `props.`을 입력하지 않고, 함수의 파라미터에서 비구조화 할당(구조분해) 문법을 사용해서 여러개의 props를 간결한 코드로 작성할 수 있다. 
+```jsx
+import React from 'react';
+
+function Hello({color, name}) {
+  return <div style={{color}}> 안녕하세요 {name} </div>
+}
+
+export default Hello;
+```
+
+<br />
+
+### defaultProps로 기본값 설정
+컴포넌트에 props를 지정하지 않았을 때, 기본적으로 사용할 값을 설정하고 싶을 땐 컴포넌트에 `defaultProps` 값을 설정하면 된다.
+
+```jsx
+import React from 'react';
+
+function Hello({ color, name }) {
+  return <div style={{ color }}>안녕하세요 {name}</div>
+}
+
+Hello.defaultProps = {
+  name: 'no-name'
+}
+
+export default Hello;
+```
+App.js에서 name이 없는 Hello 컴포넌트를 렌더링하면 no-name이 렌더링 되는 것을 확인할 수 있다.
+<br />
+
+### props.children
+컴포넌트 태그 사이에 넣은 값을 조회하고 싶다면 `props.children`을 조회하면 된다.
+
+Wrapper.js 를 만든다고 가정해보자.
+```jsx
+import React from 'react';
+
+function Wrapper() {
+  const style = {
+    border: '2px solid black',
+    padding: '16px',
+  };
+  return (
+    <div style={style}>
+
+    </div>
+  )
+}
+
+export default Wrapper;
+```
+Wrapper.js를 App에서 사용하면
+```jsx
+import React from 'react';
+import Hello from './Hello';
+import Wrapper from './Wrapper';
+
+function App() {
+  return (
+    <Wrapper>
+      <Hello />
+    </Wrapper>
+  );
+}
+
+export default App;
+```
+위 코드처럼 Hello 컴포넌트를 Wrapper 태그 내부에 넣었지만, 확인해보면 Hello 컴포넌트는 렌더링되지 않는다. 내부의 내용이 보여지게 하기 위해서는 Wrapper에서 `props.chilren`을 렌더링 해주어야한다.
+
+```jsx
+import React from 'react';
+
+function Wrapper({ children }) {
+  const style = {
+    border: '2px solid black',
+    padding: '16px',
+  };
+  return (
+    <div style={style}>
+      {children}
+    </div>
+  )
+}
+
+export default Wrapper;
+```
+
+<br />
+
+## 조건부 렌더링
+조건에 따라 다른 결과물을 렌더링할 수 있다.
+
 
 <br />
 <br />
