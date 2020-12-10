@@ -1,9 +1,20 @@
 // 리액트를 불러오기
 import React from 'react';
 
-function Hello() {
-  return <div>Hello World!</div>
+function Hello({color, name, isSpecial}) {
+  return (
+    <div style={{
+      color,
+    }}>
+      {isSpecial && <b>*</b>}
+      Hello {name}
+    </div>
+  );
 }
 
-// Hello 컴포넌트를 내보내기
+
+Hello.defaultProps = {
+  name: 'noName'
+}
+
 export default Hello;

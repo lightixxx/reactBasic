@@ -1,26 +1,15 @@
 import React from 'react';
 import Hello from './Hello';
 import './App.css';
+import Wrapper from './Wrapper';
 
 function App() {
-  const name = 'Lightix';
-  const style = {
-    backgroundColor: 'black',
-    color: '#0066ff',
-    fontSize: 24,
-    padding: '1rem 2rem'
-  }
-  
   return (
-    <>
-      {/* 주석 작성법1 */}
-      <Hello
-        //주석 작성법2 
-      />
-      <div style={style}>{name}</div>
-      <div className="gray-box"></div>
-    </>
-  );
+    <Wrapper>
+      <Hello name="lightix" color="red" isSpecial={true}/>
+      <Hello color="pink" />
+    </Wrapper>
+  )
 }
 
 export default App;
