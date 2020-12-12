@@ -384,7 +384,27 @@ export default Hello;
 ```
 `isSpecial`값이 `true`라면 `<b>💙</b>`를, `false`라면 null을 렌더링하도록 했다. JSX 문법에서는 `null`, `undefined`, `false`를 렌더링 하면 아무것도 나타나지 않는다.
 
+보통 삼항연산자를 사용해서 조건부 렌더링을 할 땐, 특정 조건에 따라 보여줘야 하는 내용이 다를 때 사용한다. 위 코드의 경우 `true`일 땐 보여주고, `false`일 땐 안보이기 때문에 `&&`연산자를 사용하는 것이 더 간편하다
+```jsx
+{/* Hello.js */}
+import React from 'react';
 
+function Hello({ color, name, isSpecial }) {
+  return (
+    <div style={{ color }}>
+      { isSpecial && <b>💙</b>}
+      안녕하세요 {name}
+    </div>
+  );
+}
+
+Hello.defaultProps = {
+  name: '이름없음'
+}
+
+export default Hello;
+```
+`{ isSpecial && <b>💙</b>}`의 결과는 `isSpecial`이 `false`일 땐 `false`이고, `isSpecial`이 `true`일 땐 `<b>💙</b>`가 된다.
 <br />
 <br />
 <br />
