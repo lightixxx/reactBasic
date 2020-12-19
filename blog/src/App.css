@@ -1,45 +1,112 @@
-.App {
+/* .App {
   text-align: center;
 }
 
 .App-logo {
   height: 40vmin;
   pointer-events: none;
-}
+} */
 
 body {
   font-family: 'DMsans', sans-serif;
   color: #2B292D;
+  background-color: #F2F3F7;
+  padding: 0 20px;
+}
+
+button {
+  border: none;
+  background: none;
+}
+
+.likeBtnWrapper {
+  
 }
 
 .black-nav {
-  color: #2860E1;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.05),
-              0 1px 3px rgba(0, 0, 0, 0.1),
-              inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  color: #2B2E35;
   width: 100%;
-  display: flex;
-  padding: 10px 20px;
-  font-weight: 600;
-  font-size: 20px;
-  background-color: #F6F8FA;
-}
-
-.list a{
-  margin-top: 5px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 20px;
-  border-bottom: 1px solid #ccc;
+  padding: 10px 20px;
+  font-weight: 600;
+  font-size: 20px;
+}
+
+.black-nav button {
+  border: none;
+  cursor: pointer;
+  padding: 20px;
+  background-color: #ccc;
+}
+
+.list {
+  background-color: #fff;
+  border-radius: 10px;
+  margin-bottom: 20px;
+  transition: opacity 0.5s ease;
+  box-shadow: 5px 5px 15px rgba(0, 0, 0, 0.1);
+}
+
+.list:hover {
+  opacity: 0.7;
+}
+
+.list a {
+  margin-top: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  /* height: 220px; */
+  /* border-bottom: 1px solid #ccc; */
+}
+
+/* .list a img {
+  width: 100%;
+  height: 200px;
+} */
+
+.list a div {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  /* justify-content: stretch; */
+  padding: 7px 14px;
+}
+
+.list a::before {
+  content: '';
+  width: 100%;
+  height: 220px;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
+}
+
+.list:first-child a::before {
+  background-image: url(./images/1.jpg);
+}
+
+.list:nth-child(2) a::before {
+  background-image: url(./images/2.jpg);
+}
+
+.list:nth-child(3) a::before {
+  background-image: url(./images/3.jpg);
 }
 
 .list h4 {
   font-weight: 400;
+  font-size: 16px;
+  color: #2B292D;
 }
 
 .list p {
-  font-size: 14px;
+  font-size: 12px;
   color: #c8c8c8;
 }
 
@@ -48,6 +115,14 @@ body {
   font-weight: 800;
 }
 
+.modal {
+  margin-top: 20px;
+  padding: 20px;
+  background: #333;
+  color: #eee;
+  text-align: center;
+}
+/* 
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
@@ -76,4 +151,4 @@ body {
   to {
     transform: rotate(360deg);
   }
-}
+} */

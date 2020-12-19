@@ -16,12 +16,12 @@ ul,
 ol,
 li {
   list-style-type: none;
-  padding-left: 0;
-  margin-left: 0;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 a {
