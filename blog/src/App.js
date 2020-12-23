@@ -12,6 +12,7 @@ function App() {
   
   let [modal, setModal] = useState(false);
   let [toggleBtn, setToggleBtn] = useState('열기');
+  let [modalTitle, setModalTitle] = useState(0);
 
   let posts = '새 그림';
 
@@ -57,7 +58,7 @@ function App() {
             <li className="list">
               <a href="#">
                 <div>
-                  <h4> { data } </h4>
+                  <h4 onClick={ () => {setModalTitle(i)} }> { data } </h4>
                   <div className="likeBtnWrapper">
                     <button onClick={ () => {likeBtnCounter(i)} }>💙</button>
                     <span>{ likeBtn[i] }</span>
@@ -95,13 +96,11 @@ function App() {
         </li> */}
       </ul>
 
-      
-
       <button onClick={ () => {setModal(!modal); changeToggleBtn()} }>{toggleBtn}</button>
 
       {
         modal === true
-        ? <Modal title = { title } />
+        ? <Modal title={title} modalTitle={modalTitle} />
         : null
       }
 
@@ -112,7 +111,7 @@ function App() {
 function Modal(props) {
   return(
       <div className="modal">
-        <h2>{ props.title[0] }</h2>
+        <h2>{ props.title[props.modalTitle] }</h2>
         <p>날짜</p>
         <p>상세내용</p>
       </div>
