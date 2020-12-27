@@ -13,12 +13,19 @@ function App() {
   let [modal, setModal] = useState(false);
   let [toggleBtn, setToggleBtn] = useState('열기');
   let [modalTitle, setModalTitle] = useState(0);
+  let [inputValue, setInputValue] = useState('');
 
   let posts = '새 그림';
 
   function changeTitle() {
     const newTitle = [...title];
     newTitle[0] = '그.냥.연.습';
+    setTitle(newTitle);
+  }
+
+  function addTitle(newText) {
+    const newTitle = [...title];
+    newTitle.unshift(newText);
     setTitle(newTitle);
   }
 
@@ -55,7 +62,7 @@ function App() {
       {
         title.map((data, i) => {
           return (
-            <li className="list">
+            <li className="list" key={i}>
               <a href="#">
                 <div>
                   <h4 onClick={ () => {setModalTitle(i)} }> { data } </h4>
@@ -70,31 +77,12 @@ function App() {
           )
         })
       }
-        {/* <li className="list">
-          <a href="#">
-            <div>
-              <h4> { title[0] } <span onClick={ ()=> setLikeBtn(likeBtn+1) }>💙</span> {likeBtn} </h4>
-              <p>20.12.04</p>
-            </div>
-          </a>
-        </li>
-        <li className="list">
-          <a href="#">
-            <div>
-              <h4> { title[1] } </h4>
-              <p>20.12.24</p>
-            </div>
-          </a>
-        </li>
-        <li className="list">
-          <a href="#">
-            <div>
-              <h4> { title[2] } </h4>
-              <p>21.01.21</p>
-            </div>
-          </a>
-        </li> */}
       </ul>
+
+      <div className="publish">
+        <input onChange={ (e) => { setInputValue(e.target.value) } } />
+        <button onClick={ () => { addTitle(inputValue)} } >저장</button>
+      </div>
 
       <button onClick={ () => {setModal(!modal); changeToggleBtn()} }>{toggleBtn}</button>
 
