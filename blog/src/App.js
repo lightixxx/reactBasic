@@ -1,9 +1,11 @@
 /* eslint-disable */
-
-import React, { useState } from 'react';
-// import image1 from './images/2.jpg';
-// import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react'
+import { Provider } from 'react-redux'
+import store from './redux/store'
+import './App.css'
+import Followers from './components/Followers'
+import Display from './components/Display'
+import Views from './components/Views'
 
 function App() {
 
@@ -52,47 +54,53 @@ function App() {
   }
 
   return (
-    <div className="App">
+    <Provider store={store}>
+      <div className="App">
       
-      <nav className="black-nav">
-        <h1>MoodwasH</h1>
-        <button onClick={ changeTitle }>버튼</button>
-      </nav>
-      <ul>
-      {
-        title.map((data, i) => {
-          return (
-            <li className="list" key={i}>
-              <a href="#">
-                <div>
-                  <h4 onClick={ () => {setModalTitle(i)} }> { data } </h4>
-                  <div className="likeBtnWrapper">
-                    <button onClick={ () => {likeBtnCounter(i)} }>💙</button>
-                    <span>{ likeBtn[i] }</span>
+        <Followers />
+        <Views/>
+        <Display />
+
+        <nav className="black-nav">
+          <h1>MoodwasH</h1>
+          <button onClick={ changeTitle }>버튼</button>
+        </nav>
+        <ul>
+        {
+          title.map((data, i) => {
+            return (
+              <li className="list" key={i}>
+                <a href="#">
+                  <div>
+                    <h4 onClick={ () => {setModalTitle(i)} }> { data } </h4>
+                    <div className="likeBtnWrapper">
+                      <button onClick={ () => {likeBtnCounter(i)} }>💙</button>
+                      <span>{ likeBtn[i] }</span>
+                    </div>
+                    <p>21.01.21</p>
                   </div>
-                  <p>21.01.21</p>
-                </div>
-              </a>
-            </li>
-          )
-        })
-      }
-      </ul>
+                </a>
+              </li>
+            )
+          })
+        }
+        </ul>
 
-      <div className="publish">
-        <input onChange={ (e) => { setInputValue(e.target.value) } } />
-        <button onClick={ () => { addTitle(inputValue)} } >저장</button>
+        <div className="publish">
+          <input onChange={ (e) => { setInputValue(e.target.value) } } />
+          <button onClick={ () => { addTitle(inputValue)} } >저장</button>
+        </div>
+
+        <button onClick={ () => {setModal(!modal); changeToggleBtn()} }>{toggleBtn}</button>
+
+        {
+          modal === true
+          ? <Modal title={title} modalTitle={modalTitle} />
+          : null
+        }
+
       </div>
-
-      <button onClick={ () => {setModal(!modal); changeToggleBtn()} }>{toggleBtn}</button>
-
-      {
-        modal === true
-        ? <Modal title={title} modalTitle={modalTitle} />
-        : null
-      }
-
-    </div>
+    </Provider>
   );
 }
 
